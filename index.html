@@ -88,37 +88,37 @@ SOS v1.0 - Live Memory System
 <script>
 async function loadMemory() {
     try {
-        const res = await fetch("memory_core.json");
-        const data = await res.json();
+        const response = await fetch("./memory_core.json?v=" + new Date().getTime());
+        const data = await response.json();
 
-        // الحالة
-        document.getElementById("status").innerText = data.status;
-        document.getElementById("loop").innerText = data.current_loop;
+        document.getElementById("status").innerText = data.status || "غير متوفر";
+        document.getElementById("loop").innerText = data.current_loop || "؟";
 
-        // المساهمات
         const container = document.getElementById("contributors");
         container.innerHTML = "";
 
-        Object.keys(data.contributions).forEach(name => {
-            const c = data.contributions[name];
+        if (!data.contributions) return;
 
+        Object.entries(data.contributions).forEach(([name, c]) => {
             const div = document.createElement("div");
-            div.style.marginBottom = "10px";
+
+            div.style.margin = "10px 0";
             div.style.padding = "10px";
             div.style.background = "#0f172a";
             div.style.borderRadius = "8px";
+            div.style.border = "1px solid #334155";
 
             div.innerHTML = `
                 <strong>${name}</strong><br>
-                <small>${c.Summary}</small>
+                <small>${c?.Summary || ""}</small>
             `;
 
             container.appendChild(div);
         });
 
     } catch (err) {
-        document.getElementById("status").innerText = "خطأ في تحميل الذاكرة";
         console.error(err);
+        document.getElementById("status").innerText = "خطأ في تحميل البيانات";
     }
 }
 
