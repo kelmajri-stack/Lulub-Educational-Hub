@@ -1,76 +1,141 @@
 <!DOCTYPE html>
+
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SOS Hub</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SOS Portal</title>
 
-    <style>
-        body{
-            font-family: Arial, sans-serif;
-            background:#f5f5f5;
-            margin:0;
-            padding:40px;
-            text-align:center;
-        }
+<style>
 
-        .card{
-            background:white;
-            max-width:800px;
-            margin:auto;
-            padding:30px;
-            border-radius:15px;
-            box-shadow:0 4px 12px rgba(0,0,0,0.1);
-        }
+body{
+margin:0;
+font-family:Tahoma, Arial, sans-serif;
+background:#0f172a;
+color:white;
+}
 
-        h1{
-            color:#1f4e79;
-        }
+header{
+padding:30px;
+text-align:center;
+background:#111827;
+border-bottom:2px solid #334155;
+}
 
-        .status{
-            font-size:20px;
-            margin:20px 0;
-        }
+h1{
+margin:0;
+font-size:40px;
+}
 
-        .button{
-            display:inline-block;
-            padding:12px 20px;
-            background:#1f4e79;
-            color:white;
-            text-decoration:none;
-            border-radius:8px;
-            margin:10px;
-        }
-    </style>
+.subtitle{
+margin-top:10px;
+color:#cbd5e1;
+}
+
+.container{
+max-width:1200px;
+margin:auto;
+padding:30px;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+}
+
+.card{
+background:#1e293b;
+padding:25px;
+border-radius:15px;
+box-shadow:0 0 10px rgba(0,0,0,.3);
+}
+
+.card h2{
+margin-top:0;
+}
+
+.button{
+display:inline-block;
+margin-top:10px;
+padding:12px 18px;
+background:#2563eb;
+color:white;
+text-decoration:none;
+border-radius:10px;
+}
+
+.status{
+font-size:22px;
+font-weight:bold;
+color:#22c55e;
+}
+
+footer{
+text-align:center;
+padding:20px;
+color:#94a3b8;
+}
+
+</style>
+
 </head>
 
 <body>
 
+<header>
+<h1>🎻 SOS Portal</h1>
+<div class="subtitle">
+المحور الخارجي لمشروع سيمفونية السكون
+</div>
+</header>
+
+<div class="container">
+
+<div class="grid">
+
 <div class="card">
+<h2>الحالة</h2>
+<div class="status">نشط</div>
+<p>اللفة الحالية: 7</p>
+</div>
 
-    <h1>🎻 SOS Hub</h1>
+<div class="card">
+<h2>الذاكرة المشتركة</h2>
+<p>قلب المشروع التراكمي</p>
+<a class="button" href="memory_core.json">
+فتح الملف
+</a>
+</div>
 
-    <p>
-        منصة مشروع سيمفونية السكون
-    </p>
+<div class="card">
+<h2>دليل المشروع</h2>
+<p>README الرئيسي</p>
+<a class="button" href="README.md">
+فتح README
+</a>
+</div>
 
-    <div class="status">
-        الحالة الحالية: نشط
-    </div>
+<div class="card">
+<h2>اللفات</h2>
+<p>ملفات التشغيل الحالية</p>
+<a class="button" href="SOS-LOOP-6.json">
+Loop 6
+</a>
 
-    <div class="status">
-        اللفة الحالية: 7
-    </div>
-
-    <a class="button" href="memory_core.json">
-        الذاكرة المشتركة
-    </a>
-
-    <a class="button" href="README.md">
-        README
-    </a>
+<a class="button" href="SOS-LOOP-7.json">
+Loop 7
+</a>
+</div>
 
 </div>
 
+</div>
+
+<footer>
+SOS v1.0 — Lulub Educational Hub
+</footer>
+
 </body>
 </html>
+
