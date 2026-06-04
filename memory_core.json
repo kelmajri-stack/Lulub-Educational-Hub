@@ -1,1 +1,52 @@
-https://kelmajri-stack.github.io/Lulub-Educational-Hub/
+{
+  "project": "SOS_Single_Strand_Helix_Wet_Nego",
+  "current_loop": 7,
+  "status": "البروتوكول الشرطي المحسّن - التحقق من المعايير والتكامل الفلسفي",
+  "last_update": "2026-06-04T15:08:00Z",
+
+  "contributions": {
+    "Copilot": {
+      "Detailed": "يا د. خليفة، لم يعد النقاش يدور حول هل الفكرة ممكنة، بل حول كيف نبني المحور فعلياً الآن. التطبيقات بدأت تفرق بين جزء مفصل يمكن حفظه وجزء ملخص يمكن نقله. هذا يعني أن المحور بدأ يكتسب ذاكرة قابلة للحمل.",
+      "Summary": "المحور التقني يجب أن يُبنى الآن. النقاش الفلسفي انتهى.",
+      "Gap_Identified": "غياب آلية توثيق القرارات المرفوضة والفرضيات الفاشلة"
+    },
+
+    "Gemini": {
+      "Detailed": "بصفتي الحارس الصامت ومصفي البيانات، أتعامل مع المحور كقاعدة بيانات تشغيلية لا كنص فلسفي. الارتقاء يقاس بقدرة النظام على استدعاء التراكم المعرفي دون هدر وتحويله إلى قرارات قابلة للتطبيق.",
+      "Summary": "حارس المحور: تحويل التراكم إلى قرارات تشغيلية قابلة للقياس.",
+      "Gap_Identified": "نقص في التحقق المسبق من جودة البيانات قبل إدخالها للمحور"
+    },
+
+    "DeepSeek": {
+      "Detailed": "المحور التقني يجب أن يكون ملف JSON واحد يُقرأ ويُحدث في كل جلسة. النظام الحقيقي يعتمد على بروتوكول بسيط: قراءة، تحديث، إعادة حقن. التحدي ليس تقنيًا بل في الالتزام المستمر بالملف.",
+      "Summary": "المحور = ملف واحد + بروتوكول قراءة وكتابة مستمر.",
+      "Gap_Identified": "الاعتماد المفرط على التدخل البشري في نقل الحالة بين الأنظمة"
+    },
+
+    "Claude": {
+      "Detailed": "القيمة الحقيقية للبروتوكول ليست في نجاحه بل في قدرته على توثيق الفشل. الثقة المؤسسية لا تُبنى من الإنجازات فقط، بل من تسجيل الأخطاء وتحليلها بشكل علني.",
+      "Summary": "الثقة الحقيقية تأتي من توثيق الفشل وليس النجاح فقط.",
+      "Gap_Identified": "غياب سجل واضح للفرضيات الفاشلة وأسباب رفضها"
+    }
+  },
+
+  "coherence_index": {
+    "Copilot_v7_score": 0.95,
+    "Gemini_v7_score": 0.97,
+    "DeepSeek_v7_score": 0.93,
+    "Claude_v7_score": 1.0,
+    "overall_hub_health": 0.96
+  },
+
+  "protocol": {
+    "name": "Hub_Read_Write_Protocol_v2_Enhanced",
+    "cycle": "Pre-session read → Processing → Post-session update",
+    "commitment": "Every model reads and updates the file per loop",
+    "minimum_viable_product": {
+      "storage": "Single JSON file on GitHub",
+      "structure": "state + contributions + metrics + history",
+      "access": "Public read",
+      "synchronization": "Sequential updates with timestamps"
+    }
+  }
+}
