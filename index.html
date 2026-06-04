@@ -95,9 +95,10 @@ color:#94a3b8;
 <div class="grid">
 
 <div class="card">
-<h2>الحالة</h2>
-<div class="status">نشط</div>
-<p>اللفة الحالية: 7</p>
+<div class="card">
+  <h2>الحالة الحية</h2>
+  <div id="status">جاري التحميل...</div>
+  <p>اللفة الحالية: <span id="loop">...</span></p>
 </div>
 
 <div class="card">
@@ -135,7 +136,20 @@ Loop 7
 <footer>
 SOS v1.0 — Lulub Educational Hub
 </footer>
+<script>
+fetch("memory_core.json")
+  .then(res => res.json())
+  .then(data => {
 
+    document.getElementById("status").innerText = data.status;
+    document.getElementById("loop").innerText = data.current_loop;
+
+  })
+  .catch(err => {
+    document.getElementById("status").innerText = "خطأ في تحميل البيانات";
+    console.error(err);
+  });
+</script>
 </body>
 </html>
 
