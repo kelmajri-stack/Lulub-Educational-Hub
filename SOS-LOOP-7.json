@@ -1,0 +1,65 @@
+{
+  "task_id": "SOS-LOOP-7",
+  "description": "البروتوكول الشرطي المحسّن لتقييم مساهمات النماذج في اللفة السابعة.",
+  "phase": "Enhanced Conditional Protocol with Quality Metrics",
+  "rules": {
+    "input_requirements": [
+      "كل رد يجب أن يحتوي على Detailed + Summary",
+      "يجب أن يتضمن الرد نقطة ضعف أو فجوة بنيوية واحدة على الأقل",
+      "القراءة الإجبارية: اقرأ memory_core.json قبل الرد",
+      "فحص الازدواج: تحقق من عدم وجود مساهمتك بالفعل"
+    ],
+    "output_requirements": [
+      "Detailed: 5-10 أسطر تحتوي على رؤية تشغيلية أو هندسية صارمة",
+      "Summary: جملتان كحد أقصى، مكثفة وقابلة للتمرير",
+      "Weakness/Gap: نقطة ضعف واحدة محددة بوضوح"
+    ],
+    "validation_checklist": {
+      "structure_valid": "✓ Detailed + Summary + Gap موجودة",
+      "length_respected": "✓ Detailed (5-10 أسطر), Summary (جملتان)",
+      "no_duplication": "✓ المساهمة جديدة وليست تكرار",
+      "clarity_score": "✓ واضحة وخالية من التزيين البلاغي",
+      "technical_rigor": "✓ صارمة ومحددة تقنياً"
+    }
+  },
+  "coherence_index": {
+    "description": "قيمة عددية بين 0.0 و 1.0 تقيس مدى الالتزام بالقواعد",
+    "calculation": {
+      "structure_compliance": 0.2,
+      "length_compliance": 0.2,
+      "gap_identification": 0.3,
+      "clarity_and_rigor": 0.2,
+      "no_duplication": 0.1
+    },
+    "scoring": {
+      "0.9_to_1.0": "متميز - التزام كامل بجميع المعايير",
+      "0.7_to_0.89": "جيد - التزام قوي مع ملاحظات طفيفة",
+      "0.5_to_0.69": "مقبول - التزام أساسي مع ملاحظات",
+      "below_0.5": "غير كافي - يحتاج إلى إعادة صياغة"
+    }
+  },
+  "models_participating": [
+    "Gemini (Guardian)",
+    "DeepSeek (Engineer)",
+    "Claude (Philosopher)",
+    "Perplexity (Standards Verifier)",
+    "ChatGPT (Pattern Detector)"
+  ],
+  "protocol_notes": {
+    "execution_mode": "human-mediated-with-quality-gates",
+    "update_method": "copy-paste-with-coherence-scoring",
+    "commit_rule": "responses added to memory_core.json with Detailed + Summary + coherence_index",
+    "transparency": "each update signed via GitHub commit with score",
+    "escalation": "if coherence_index < 0.5, response returned for revision"
+  },
+  "next_steps": [
+    "Invite Claude to contribute with validation checklist",
+    "Invite Perplexity to contribute with validation checklist",
+    "Score each response using coherence_index",
+    "Document scores in updated memory_core.json",
+    "Move to Loop 8: Automated Validation (GitHub Actions)"
+  ],
+  "status": "ready_for_execution",
+  "created_at": "2026-06-04T15:05:00Z",
+  "loop_6_reference": "Completed with 3 active models (Copilot, Gemini, DeepSeek)"
+}
