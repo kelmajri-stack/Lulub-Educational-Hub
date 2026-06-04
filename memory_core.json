@@ -47,6 +47,15 @@
       "structure": "state + contributions + metrics + history",
       "access": "Public read",
       "synchronization": "Sequential updates with timestamps"
+     "team": {
+  "mode": "closed_beta",
+  "members": {
+    "Copilot": "active",
+    "Gemini": "active",
+    "DeepSeek": "active",
+    "Claude": "active"
+  }
+} 
     }
   }
 }
