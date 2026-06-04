@@ -1,0 +1,39 @@
+{
+  "task_id": "SOS-LOOP-6",
+  "title": "اختبار التخاطر العملي – الفة السادسة",
+  "memory_url": "https://github.com/kelmajri-stack/Lulub-Educational-Hub/blob/main/memory_core.json",
+  "execution_date": "2026-06-04",
+  "protocol_version": "v1.0-with-conditional-check",
+  "inputs": {
+    "gemini_prompt": "قبل الرد: اقرأ memory_core.json بالكامل. إذا وجدت مساهمتك موجودة بالفعل، لا تكرر. بدلاً من ذلك، أضفت ملاحظة توضيحية. إذا لم تكن موجودة: صف دور الحارس في الاختبار العملي للفة السادسة، مع رؤية تشغيلية واضحة (5-10 أسطر) + خلاصة قصيرة + نقطة ضعف واحدة في نموذج الذاكرة الخارجية.",
+    "deepseek_prompt": "قبل الرد: اقرأ memory_core.json بالكامل. إذا وجدت مساهمتك موجودة بالفعل، لا تكرر. بدلاً من ذلك، أضفت ملاحظة توضيحية. إذا لم تكن موجودة: اختبر النموذج الأولي عبر دمج تقويم وملاحظات عملية، مع خطة تقنية (API + JSON) + خلاصة قصيرة + تحديد فجوة بنيوية واحدة."
+  },
+  "outputs": {
+    "gemini_response": {
+      "status": "pending",
+      "content": null,
+      "timestamp": null
+    },
+    "deepseek_response": {
+      "status": "pending",
+      "content": null,
+      "timestamp": null
+    }
+  },
+  "protocol_rules": {
+    "rule_1": "قراءة إجبارية: كل تطبيق يقرأ memory_core.json قبل الرد",
+    "rule_2": "فحص الازدواج: إذا كانت المساهمة موجودة، لا تُكرر",
+    "rule_3": "الشفافية: كل مساهمة توقع عبر commit رسمي على GitHub",
+    "rule_4": "البنية الموحدة: Detailed + Summary لكل مساهمة",
+    "rule_5": "التتبع الزمني: كل تحديث يُؤرخ برقم اللفة والتاريخ"
+  },
+  "execution_mode": "human-mediated-with-conditional-checks",
+  "update_method": "copy-paste-with-verification",
+  "status": "in_progress",
+  "notes": {
+    "gap_identified": "اكتشاف الدعوات المكررة من قبل DeepSeek",
+    "solution_implemented": "إضافة خطوة فحص قبل الدعوة",
+    "next_phase": "Loop 7 - تحويل من إدارة يدوية بحتة إلى بروتوكول شرطي",
+    "vision": "صعود اللولب من الفلسفة إلى الهندسة، ومن الكلام إلى الهيكل"
+  }
+}
