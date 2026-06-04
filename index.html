@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
@@ -7,126 +6,75 @@
 <title>SOS Portal</title>
 
 <style>
-
 body{
-margin:0;
-font-family:Tahoma, Arial, sans-serif;
-background:#0f172a;
-color:white;
+    margin:0;
+    font-family:Tahoma, Arial, sans-serif;
+    background:#0f172a;
+    color:white;
 }
 
 header{
-padding:30px;
-text-align:center;
-background:#111827;
-border-bottom:2px solid #334155;
+    padding:25px;
+    text-align:center;
+    background:#111827;
+    border-bottom:2px solid #334155;
 }
 
-h1{
-margin:0;
-font-size:40px;
-}
-
-.subtitle{
-margin-top:10px;
-color:#cbd5e1;
-}
+h1{ margin:0; }
 
 .container{
-max-width:1200px;
-margin:auto;
-padding:30px;
+    max-width:1100px;
+    margin:auto;
+    padding:20px;
 }
 
 .grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:20px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:15px;
 }
 
 .card{
-background:#1e293b;
-padding:25px;
-border-radius:15px;
-box-shadow:0 0 10px rgba(0,0,0,.3);
-}
-
-.card h2{
-margin-top:0;
-}
-
-.button{
-display:inline-block;
-margin-top:10px;
-padding:12px 18px;
-background:#2563eb;
-color:white;
-text-decoration:none;
-border-radius:10px;
+    background:#1e293b;
+    padding:20px;
+    border-radius:12px;
 }
 
 .status{
-font-size:22px;
-font-weight:bold;
-color:#22c55e;
+    font-size:20px;
+    color:#22c55e;
+    font-weight:bold;
 }
 
 footer{
-text-align:center;
-padding:20px;
-color:#94a3b8;
+    text-align:center;
+    padding:15px;
+    color:#94a3b8;
 }
-
 </style>
-
 </head>
 
 <body>
 
 <header>
 <h1>🎻 SOS Portal</h1>
-<div class="subtitle">
-المحور الخارجي لمشروع سيمفونية السكون
-</div>
+<p>لوحة التحكم الحية للمشروع</p>
 </header>
 
 <div class="container">
 
+<!-- الحالة -->
 <div class="grid">
 
 <div class="card">
-<div class="card">
-  <h2>الحالة الحية</h2>
-  <div id="status">جاري التحميل...</div>
-  <p>اللفة الحالية: <span id="loop">...</span></p>
+<h2>الحالة</h2>
+<div id="status">جاري التحميل...</div>
+<p>اللفة الحالية: <span id="loop">...</span></p>
 </div>
 
 <div class="card">
-<h2>الذاكرة المشتركة</h2>
-<p>قلب المشروع التراكمي</p>
-<a class="button" href="memory_core.json">
-فتح الملف
-</a>
-</div>
-
-<div class="card">
-<h2>دليل المشروع</h2>
-<p>README الرئيسي</p>
-<a class="button" href="README.md">
-فتح README
-</a>
-</div>
-
-<div class="card">
-<h2>اللفات</h2>
-<p>ملفات التشغيل الحالية</p>
-<a class="button" href="SOS-LOOP-6.json">
-Loop 6
-</a>
-
-<a class="button" href="SOS-LOOP-7.json">
-Loop 7
-</a>
+<h2>المساهمات</h2>
+<div id="contributors">جاري التحميل...</div>
 </div>
 
 </div>
@@ -134,22 +82,48 @@ Loop 7
 </div>
 
 <footer>
-SOS v1.0 — Lulub Educational Hub
+SOS v1.0 - Live Memory System
 </footer>
+
 <script>
-fetch("memory_core.json")
-  .then(res => res.json())
-  .then(data => {
+async function loadMemory() {
+    try {
+        const res = await fetch("memory_core.json");
+        const data = await res.json();
 
-    document.getElementById("status").innerText = data.status;
-    document.getElementById("loop").innerText = data.current_loop;
+        // الحالة
+        document.getElementById("status").innerText = data.status;
+        document.getElementById("loop").innerText = data.current_loop;
 
-  })
-  .catch(err => {
-    document.getElementById("status").innerText = "خطأ في تحميل البيانات";
-    console.error(err);
-  });
+        // المساهمات
+        const container = document.getElementById("contributors");
+        container.innerHTML = "";
+
+        Object.keys(data.contributions).forEach(name => {
+            const c = data.contributions[name];
+
+            const div = document.createElement("div");
+            div.style.marginBottom = "10px";
+            div.style.padding = "10px";
+            div.style.background = "#0f172a";
+            div.style.borderRadius = "8px";
+
+            div.innerHTML = `
+                <strong>${name}</strong><br>
+                <small>${c.Summary}</small>
+            `;
+
+            container.appendChild(div);
+        });
+
+    } catch (err) {
+        document.getElementById("status").innerText = "خطأ في تحميل الذاكرة";
+        console.error(err);
+    }
+}
+
+loadMemory();
 </script>
+
 </body>
 </html>
-
