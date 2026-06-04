@@ -90,57 +90,79 @@ SOS v1.0 - Live Memory System
 </footer>
 
 <script>
-async function loadMemory() {
+(async function () {
+
+    console.log("SOS Loader Started");
+
     const statusEl = document.getElementById("status");
     const loopEl = document.getElementById("loop");
     const teamEl = document.getElementById("team");
     const contribEl = document.getElementById("contributors");
 
     try {
-        console.log("تحميل memory_core.json...");
+        const url = "./memory_core.json";
 
-        const response = await fetch("./memory_core.json?v=" + Date.now());
+        console.log("Fetching:", url);
 
-        console.log("Status:", response.status);
+        const res = await fetch(url);
 
-        if (!response.ok) {
-            throw new Error("HTTP Error: " + response.status);
+        console.log("HTTP Status:", res.status);
+
+        if (!res.ok) {
+            throw new Error("Cannot load JSON: " + res.status);
         }
 
-        const data = await response.json();
-        console.log("DATA LOADED:", data);
+        const data = await res.json();
+
+        console.log("DATA:", data);
 
         // الحالة
-        statusEl.innerText = data.status || "غير متوفر";
-        loopEl.innerText = data.current_loop || "...";
+        if (statusEl) statusEl.innerText = data.status || "غير متوفر";
+        if (loopEl) loopEl.innerText = data.current_loop || "...";
 
         // الفريق
-        teamEl.innerHTML = "";
-        if (data.team?.members) {
-            Object.entries(data.team.members).forEach(([name, state]) => {
-                const div = document.createElement("div");
-                div.innerHTML = `<strong>${name}</strong> — ${state}`;
-                teamEl.appendChild(div);
-            });
+        if (teamEl) {
+            teamEl.innerHTML = "";
+            if (data.team?.members) {
+                Object.entries(data.team.members).forEach(([name, state]) => {
+                    const div = document.createElement("div");
+                    div.innerHTML = `<strong>${name}</strong> — ${state}`;
+                    teamEl.appendChild(div);
+                });
+            }
         }
 
         // المساهمات
-        contribEl.innerHTML = "";
-        if (data.contributions) {
-            Object.entries(data.contributions).forEach(([name, c]) => {
-                const div = document.createElement("div");
-                div.innerHTML = `<strong>${name}</strong><br><small>${c.Summary || ""}</small>`;
-                contribEl.appendChild(div);
-            });
+        if (contribEl) {
+            contribEl.innerHTML = "";
+            if (data.contributions) {
+                Object.entries(data.contributions).forEach(([name, c]) => {
+                    const div = document.createElement("div");
+                    div.style.margin = "8px 0";
+                    div.style.padding = "8px";
+                    div.style.background = "#0f172a";
+                    div.style.borderRadius = "8px";
+
+                    div.innerHTML = `
+                        <strong>${name}</strong><br>
+                        <small>${c?.Summary || "لا يوجد ملخص"}</small>
+                    `;
+
+                    contribEl.appendChild(div);
+                });
+            }
         }
 
     } catch (err) {
-        console.error("LOAD ERROR:", err);
-        statusEl.innerText = "فشل تحميل memory_core.json";
-    }
-}
+        console.error("SOS ERROR:", err);
 
-loadMemory();
+        if (statusEl) {
+            statusEl.innerText = "فشل تحميل الذاكرة (JSON أو المسار)";
+            statusEl.style.color = "red";
+        }
+    }
+
+})();
 </script>
 
 </body>
